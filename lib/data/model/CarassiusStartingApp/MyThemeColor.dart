@@ -16,9 +16,8 @@ import 'package:flutter/material.dart';
 /// * textBackground
 /// * textError
 class MyThemeColor{
-
   /// untuk menyimpan warna lain kalau warna default tidak cukup
-  Map<String, Color> warnaLain = {};
+  static Map<String, Color> warnaLain = {};
 
   Color _primary = Colors.green[900]!;
   /// warna utama aplikasi (bukan warna background)

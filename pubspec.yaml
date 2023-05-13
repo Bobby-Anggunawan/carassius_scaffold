@@ -1,7 +1,7 @@
 name: carassius_scaffold
-description: Flutter basic project template
+description: All you need to develop flutter application faster!!
 version: 0.0.1
-homepage:
+homepage: https://github.com/Bobby-Anggunawan
 
 environment:
   sdk: '>=2.19.0-444.2.beta <3.0.0'
