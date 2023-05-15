@@ -19,6 +19,7 @@ class CarassiusScaffold extends StatelessWidget {
 
   /// option untuk class [CarassiusAuthorityScaffold]
   /// Digunakan untuk memblokir atau memberi akses user ke halaman ini
+  /// **NOTE** Page yang ditampilkan di halaman ini di masukkan ke dalam option ini
   final AuthorityScaffoldOptions authorityScaffoldOptions;
 
   /// option ini digunakan class [CarassiusLoadingScaffold]
@@ -35,6 +36,7 @@ class CarassiusScaffold extends StatelessWidget {
         allowToSeePage: authorityScaffoldOptions.allowToSeePage,
         authorityLevel: authorityScaffoldOptions.authorityLevel,
         pages: authorityScaffoldOptions.pages,
+        notAllowedPage: authorityScaffoldOptions.notAllowedPage,
       ),
     );
   }

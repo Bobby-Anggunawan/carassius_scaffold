@@ -3,19 +3,31 @@ import 'package:carassius_scaffold/data/model/Pages/CarassiusScaffold/AuthorityS
 import 'package:carassius_scaffold/data/model/Pages/CarassiusScaffold/LoadingScaffoldOption.dart';
 import 'package:flutter/material.dart';
 
-class Page1 extends StatelessWidget {
-  const Page1({Key? key}) : super(key: key);
+class Page2 extends StatelessWidget {
+  const Page2({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return CarassiusScaffold(
-        authorityScaffoldOptions: AuthorityScaffoldOptions(
-            notAllowed: null,
-            allowToSeePage: true
-        ),
         loadingScaffoldOption: LoadingScaffoldOption.noLoading(),
-        pageLandscape: pageLandscape,
-        pagePortrait: pagePortrait
+        authorityScaffoldOptions: AuthorityScaffoldOptions.singlePage(
+            pagePortrait: Scaffold(
+              body: Center(
+                child: Text("page2Portrait"),
+              ),
+            ),
+            pageLandscape: Scaffold(
+              body: Center(
+                child: Text("page2Landscape"),
+              ),
+              floatingActionButton: FloatingActionButton(
+                child: Text("Ke Page 1"),
+                onPressed: () {
+                  Navigator.of(context).pushNamed("/");
+                },
+              ),
+            )
+        )
     );
   }
 }

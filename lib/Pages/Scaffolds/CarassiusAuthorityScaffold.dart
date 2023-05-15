@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import '../../UIStyle/CarassiusThemeGetter.dart';
 
 class CarassiusAuthorityScaffold extends StatelessWidget {
-  const CarassiusAuthorityScaffold({Key? key, required this.allowToSeePage, required this.pages, required this.authorityLevel, this.notAllowed: null}) : super(key: key);
+  const CarassiusAuthorityScaffold({Key? key, required this.allowToSeePage, required this.pages, required this.authorityLevel, this.notAllowedPage: null}) : super(key: key);
 
-  /// kalau false [notAllowed] akan ditampilkan
-  /// kalau true [main] akan ditampilkan
+  /// kalau false [notAllowedPage] akan ditampilkan
+  /// kalau true **pages[authorityLevel]** akan ditampilkan
   final bool allowToSeePage;
 
   /// indeks dari widget yang ditampilkan di variable [pages]
@@ -16,7 +16,7 @@ class CarassiusAuthorityScaffold extends StatelessWidget {
   final List<CarassiusResponsiveScaffold> pages;
 
   /// widget yang ditampilkan kalau **[allowToSeePage] == false**
-  final Widget? notAllowed;
+  final Widget? notAllowedPage;
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +29,8 @@ class CarassiusAuthorityScaffold extends StatelessWidget {
       return pages[authorityLevel];
     }
 
-    if(notAllowed != null){
-      return notAllowed!;
+    if(notAllowedPage != null){
+      return notAllowedPage!;
     }
 
     //TODO: BUAT HALAMAN default YANG LEBIH BAGUS

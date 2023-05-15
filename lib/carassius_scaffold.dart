@@ -26,7 +26,7 @@ class CarassiusStartingApp extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return MaterialApp(
-      routes: routes.routes,
+      routes: routes.getRoutes(),
       theme: ThemeData(
           colorScheme: colors.colorScheme(context),
           useMaterial3: true,

@@ -1,5 +1,10 @@
 import 'package:carassius_scaffold/carassius_scaffold.dart';
+import 'package:carassius_scaffold/data/model/CarassiusStartingApp/MyRoutes.dart';
+import 'package:carassius_scaffold/data/model/CarassiusStartingApp/MyThemeColor.dart';
 import 'package:flutter/material.dart';
+
+import 'Page1.dart';
+import 'Page2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,8 +17,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CarassiusStartingApp(
-        routes: routes,
-        colors: colors
+        routes: MyRoutes()
+            .addRoutes("/", Page1())
+            .addRoutes("/page_dua", Page2()),
+        colors: MyThemeColor()
     );
   }
 }
