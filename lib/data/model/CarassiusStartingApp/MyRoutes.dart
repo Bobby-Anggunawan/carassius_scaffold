@@ -1,3 +1,4 @@
+import 'package:carassius_scaffold/Pages/CarassiusScaffold.dart';
 import 'package:flutter/material.dart';
 
 
@@ -16,8 +17,8 @@ class MyRoutes{
   ///
   /// Daftar parameter:
   /// * parameter [route] adalah nama dari route yang ingin dimasukkan, misalnya "/" atau "/home". Jadi nama wajib dimulai dari "/" atau akan mereturn error
-  /// * parameter [page] lebih baik widget yang punya parrent [Scaffold]
-  MyRoutes addRoutes(String route, Widget page){
+  /// * parameter [page] harus menggunakan widget [CarassiusScaffold]. Widget ini sudah lengkap terdiri dari scaffold, ada fungsi menampilkan loading, dll
+  MyRoutes addRoutes(String route, CarassiusScaffold page){
     if(route[0] == "/"){
       routes[route] = (context) => page;
       return this;

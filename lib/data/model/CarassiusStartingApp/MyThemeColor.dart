@@ -51,13 +51,13 @@ class MyThemeColor{
 
 
   Color _background = Colors.grey[200]!;
-  /// warna saat tidak ada warna lain.
-  /// Biasanya warna putih. Warna ini punya komposisi terbanyak di suatu aplikasi bukan [primary]
+  /// warna latar belakang aplikasi.
+  /// Biasanya warna abu abu. warna ini biasanya ada dibawah widget dengan warna putih seperti card
   MyThemeColor setBackground(Color color){
     _background = color;
     return this;
   }
-  Color _textBackground = Colors.black;
+  Color _textBackground = Colors.grey;
   /// warna teks diatas warna [background]
   MyThemeColor setTextBackground(Color color){
     _textBackground = color;
@@ -79,6 +79,21 @@ class MyThemeColor{
     return this;
   }
 
+  Color _surface = Colors.white;
+  /// warna saat ada diatar surface seperti card
+  /// biasanya warna ini punya komposisi terbanyak di suatu aplikasi khususnya mobile bukan warna [primary]
+  MyThemeColor setSurface(Color color){
+    _surface = color;
+    return this;
+  }
+
+  Color _textSurface = Colors.black;
+  /// warna teks diatas warna [surface]
+  MyThemeColor setTextSurface(Color color){
+    _textSurface = color;
+    return this;
+  }
+
   ColorScheme colorScheme(BuildContext context){
 
     var ret = Theme.of(context).colorScheme;
@@ -92,8 +107,8 @@ class MyThemeColor{
         onError: _textError,
         background: _background,
         onBackground: _textBackground,
-        surface: ret.surface,
-        onSurface: ret.onSurface
+        surface: _surface,
+        onSurface: _textSurface
     );
   }
 }

@@ -5,8 +5,11 @@ class ThemeGetterColors{
   Color textPrimary = Colors.white;
   Color secondary = Colors.orange[900]!;
   Color textSecondary = Colors.white;
+  Color surface = Colors.white;
+  Color onSurface = Colors.black;
+  /// note ini bukan warna putih. Kalau cari putih sebaiknya pakai [surface]
   Color background = Colors.grey[200]!;
-  Color textBackground = Colors.black;
+  Color textBackground = Colors.grey;
   Color error = Colors.red[900]!;
   Color textError = Colors.white;
 
@@ -22,6 +25,8 @@ class ThemeGetterColors{
       Color _textBackground,
       Color _error,
       Color _textError,
+      Color _surface,
+      Color _onSurface,
       Map<String, Color> _warnaLain
   ){
     primary = _primary;
@@ -33,5 +38,7 @@ class ThemeGetterColors{
     error = _error;
     textError = _textError;
     warnaLain = _warnaLain;
+    surface = _surface;
+    onSurface = _onSurface;
   }
 }

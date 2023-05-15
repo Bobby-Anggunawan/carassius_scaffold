@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../UIStyle/ThemeGetter.dart';
+
+import '../../UIStyle/CarassiusThemeGetter.dart';
 
 class CarassiusAuthorityScaffold extends StatelessWidget {
   const CarassiusAuthorityScaffold({Key? key, required this.allowToSeePage, required this.main, this.notAllowed: null}) : super(key: key);
@@ -30,7 +31,7 @@ class CarassiusAuthorityScaffold extends StatelessWidget {
       body: Center(
         child: Text(
           "Tidak boleh melihat halaman ini",
-          style: ThemeGetter.textTheme(context).displayLarge,
+          style: CarassiusThemeGetter.textTheme(context).displayLarge,
         ),
       ),
     );

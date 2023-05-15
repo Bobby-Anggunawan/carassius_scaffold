@@ -1,9 +1,11 @@
+import 'package:carassius_scaffold/CarassiusConfig.dart';
+import 'package:carassius_scaffold/data/model/UIStyle/ThemeGetter/ThemeGetterPadding.dart';
 import 'package:flutter/material.dart';
 import '../data/model/UIStyle/ThemeGetter/ThemeGetterColors.dart';
 import '../data/model/CarassiusStartingApp/MyThemeColor.dart';
 
 /// memdapatkan data theme seperti color, dan default textstyle
-class ThemeGetter{
+class CarassiusThemeGetter{
 
   static TextTheme? _textTheme = null;
   static ColorScheme? _themeGetterColors = null;
@@ -24,6 +26,8 @@ class ThemeGetter{
       ret.onBackground,
       ret.error,
       ret.onError,
+      ret.surface,
+      ret.onSurface,
       MyThemeColor.warnaLain
     );
   }
@@ -35,5 +39,13 @@ class ThemeGetter{
       _textTheme = Theme.of(context).textTheme;
     }
     return _textTheme!;
+  }
+
+  static ThemeGetterPadding paddingTheme(){
+    return ThemeGetterPadding(
+        CarassiusConfig.paddingSmall,
+        CarassiusConfig.paddingNormal,
+        CarassiusConfig.paddingLarge
+    );
   }
 }
