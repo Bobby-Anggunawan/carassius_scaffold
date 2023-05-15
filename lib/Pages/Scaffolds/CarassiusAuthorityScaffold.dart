@@ -27,12 +27,10 @@ class CarassiusAuthorityScaffold extends StatelessWidget {
 
     //TODO: BUAT HALAMAN default YANG LEBIH BAGUS
     // tampilan widget default [notAllowed]
-    return Scaffold(
-      body: Center(
-        child: Text(
-          "Tidak boleh melihat halaman ini",
-          style: CarassiusThemeGetter.textTheme(context).displayLarge,
-        ),
+    return Center(
+      child: Text(
+        "Tidak boleh melihat halaman ini",
+        style: CarassiusThemeGetter.textTheme(context).displayLarge,
       ),
     );
   }
