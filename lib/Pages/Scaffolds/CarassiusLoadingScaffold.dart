@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../UIStyle/CarassiusBoxDecoration.dart';
+import '../CarassiusLoadingPage.dart';
 
 class CarassiusLoadingScaffold extends StatelessWidget {
   const CarassiusLoadingScaffold({Key? key, required this.isLoading, required this.isLoadingOverlay, required this.main, this.loadingWidget = null}) : super(key: key);
@@ -17,7 +18,7 @@ class CarassiusLoadingScaffold extends StatelessWidget {
   final Widget main;
 
   /// widget yang ditampilkan kalau loading.
-  /// kalau nilainya null, akan menampilkan widget CircularProgressIndicator()
+  /// kalau nilainya null, akan menampilkan widget default CarassiusLoadingPage() yang berisi CircularProgressIndicator()
   final Widget? loadingWidget;
 
   @override
@@ -25,20 +26,21 @@ class CarassiusLoadingScaffold extends StatelessWidget {
     if(isLoading && isLoadingOverlay){
       return Stack(
         children: [
+
+          loadingWidget ?? CarassiusLoadingPage(),
+
           Container(
             width: double.infinity,
             height: double.infinity,
             decoration: CarassiusDecoration.transparanBlack(),
           ),
-          loadingWidget ?? CircularProgressIndicator(),
+
           main
         ],
       );
     }
     else if(isLoading && !isLoadingOverlay){
-      return Center(
-        child: loadingWidget ?? CircularProgressIndicator(),
-      );
+      return loadingWidget ?? CarassiusLoadingPage();
     }
 
     return main;
