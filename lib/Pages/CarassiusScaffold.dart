@@ -15,8 +15,6 @@ class CarassiusScaffold extends StatelessWidget {
     required this.authorityScaffoldOptions,
     required this.loadingScaffoldOption,
 
-    required this.pageLandscape,
-    required this.pagePortrait
   }) : super(key: key);
 
   /// option untuk class [CarassiusAuthorityScaffold]
@@ -27,25 +25,17 @@ class CarassiusScaffold extends StatelessWidget {
   /// digunakan untuk menampilkan spinner kalau loading
   final LoadingScaffoldOption loadingScaffoldOption;
 
-  /// widget yang ditampilkan di tampilan portrait(smartphone)
-  final Scaffold pagePortrait;
-  /// widget yang ditampilkan di tampila landscape(pc)
-  final Scaffold pageLandscape;
-
   @override
   Widget build(BuildContext context) {
-    return CarassiusAuthorityScaffold(
-      allowToSeePage: authorityScaffoldOptions.allowToSeePage,
-      notAllowed: authorityScaffoldOptions.notAllowed,
-      main: CarassiusLoadingScaffold(
-        isLoading: loadingScaffoldOption.isLoading,
-        isLoadingOverlay: loadingScaffoldOption.isLoadingOverlay,
-        loadingWidget: loadingScaffoldOption.loadingWidget,
-        main: CarassiusResponsiveScaffold(
-          portrait: pagePortrait,
-          landscape: pageLandscape,
-        ),
-      )
+    return CarassiusLoadingScaffold(
+      isLoading: loadingScaffoldOption.isLoading,
+      isLoadingOverlay: loadingScaffoldOption.isLoadingOverlay,
+      loadingWidget: loadingScaffoldOption.loadingWidget,
+      main: CarassiusAuthorityScaffold(
+        allowToSeePage: authorityScaffoldOptions.allowToSeePage,
+        authorityLevel: authorityScaffoldOptions.authorityLevel,
+        pages: authorityScaffoldOptions.pages,
+      ),
     );
   }
 }

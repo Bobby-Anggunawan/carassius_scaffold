@@ -1,24 +1,32 @@
+import 'package:carassius_scaffold/Pages/Scaffolds/CarassiusResponsiveScaffold.dart';
 import 'package:flutter/material.dart';
 
 import '../../UIStyle/CarassiusThemeGetter.dart';
 
 class CarassiusAuthorityScaffold extends StatelessWidget {
-  const CarassiusAuthorityScaffold({Key? key, required this.allowToSeePage, required this.main, this.notAllowed: null}) : super(key: key);
+  const CarassiusAuthorityScaffold({Key? key, required this.allowToSeePage, required this.pages, required this.authorityLevel, this.notAllowed: null}) : super(key: key);
 
   /// kalau false [notAllowed] akan ditampilkan
   /// kalau true [main] akan ditampilkan
   final bool allowToSeePage;
 
-  /// widget yang ditampilkan kalau **[allowToSeePage] == true**
-  final Widget main;
+  /// indeks dari widget yang ditampilkan di variable [pages]
+  final int authorityLevel;
+  /// widget daftar yang ditampilkan kalau **[allowToSeePage] == true**. Widget yang ditampilkan adalah widget dengan indeks sesuai variable [authorityLevel]
+  final List<CarassiusResponsiveScaffold> pages;
 
   /// widget yang ditampilkan kalau **[allowToSeePage] == false**
   final Widget? notAllowed;
 
   @override
   Widget build(BuildContext context) {
+
+    if(authorityLevel < 0 && authorityLevel > pages.length-1){
+      throw AssertionError("variable CarassiusAuthorityScaffold.authorityLevel seharusnya lebih besar dari 0 dan tidak melebihi indeks maksimal dari list CarassiusAuthorityScaffold.pages");
+    }
+
     if(allowToSeePage){
-      return main;
+      return pages[authorityLevel];
     }
 
     if(notAllowed != null){

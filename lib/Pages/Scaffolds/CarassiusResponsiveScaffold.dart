@@ -9,6 +9,13 @@ class CarassiusResponsiveScaffold extends StatelessWidget {
   /// widget yang ditampilkan di tampila landscape(pc)
   final Widget landscape;
 
+  bool semuaWidgetScaffold(){
+    if(portrait is Scaffold && landscape is Scaffold){
+      return true;
+    }
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return OrientationBuilder(builder: (BuildContext context, Orientation orientation) {

@@ -1,24 +1,28 @@
-import 'package:flutter/material.dart';
+import '../../../../Pages/Scaffolds/CarassiusResponsiveScaffold.dart';
 
 class AuthorityScaffoldOptions{
-  /// kalau false widget [notAllowed] akan ditampilkan
+  /// kalau false [notAllowed] akan ditampilkan
   /// kalau true [main] akan ditampilkan
-  late bool allowToSeePage;
-
-  /// widget yang ditampilkan kalau **[allowToSeePage] == false**
-  /// kalau null akan menampilkan widget dafault
-  late Widget? notAllowed;
+  bool allowToSeePage;
+  /// indeks dari widget yang ditampilkan di variable [pages]. Sebaiknya diisi 0
+  int authorityLevel;
+  /// widget daftar yang ditampilkan kalau **[allowToSeePage] == true**. Widget yang ditampilkan adalah widget dengan indeks sesuai variable [authorityLevel]
+  List<CarassiusResponsiveScaffold> pages;
 
   AuthorityScaffoldOptions({
-    required this.notAllowed,
-    required this.allowToSeePage
-  }){}
-
-  /// builder kalau widget ini tidak membatasi user, semua user bisa lihat halaman
-  static AuthorityScaffoldOptions alowAllUSer(){
-    return AuthorityScaffoldOptions(
-        notAllowed: null,
-        allowToSeePage: true
-    );
+    required this.allowToSeePage,
+    required this.authorityLevel,
+    required this.pages
+  }){
+    if(allowToSeePage){
+      if(pages.isEmpty){
+        throw AssertionError("AuthorityScaffoldOptions.pages tidak boleh kosong, minimal harus ada 1 widget");
+      }
+      pages.forEach((element) {
+        if(element.semuaWidgetScaffold() == false){
+          throw AssertionError("AuthorityScaffoldOptions.pages harus diisi widget Scaffold di portrait dan landscape");
+        }
+      });
+    }
   }
 }
