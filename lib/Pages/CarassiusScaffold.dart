@@ -34,7 +34,7 @@ class CarassiusScaffold extends StatelessWidget {
       loadingWidget: loadingScaffoldOption.loadingWidget,
       main: CarassiusAuthorityScaffold(
         allowToSeePage: authorityScaffoldOptions.allowToSeePage,
-        authorityLevel: authorityScaffoldOptions.authorityLevel,
+        showedPagesIndex: authorityScaffoldOptions.showedPagesIndex,
         pages: authorityScaffoldOptions.pages,
         notAllowedPage: authorityScaffoldOptions.notAllowedPage,
       ),

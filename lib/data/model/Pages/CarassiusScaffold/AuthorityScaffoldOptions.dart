@@ -6,9 +6,9 @@ class AuthorityScaffoldOptions{
   /// kalau false [notAllowed] akan ditampilkan
   /// kalau true [main] akan ditampilkan
   bool allowToSeePage;
-  /// indeks dari widget yang ditampilkan di variable [pages]. Sebaiknya diisi 0
-  int authorityLevel;
-  /// widget daftar yang ditampilkan kalau **[allowToSeePage] == true**. Widget yang ditampilkan adalah widget dengan indeks sesuai variable [authorityLevel]
+  /// indeks dari widget yang ditampilkan di variable [pages]. Sebaiknya diisi 0, apalagi kalo cuma ada 1 page :v
+  int showedPagesIndex;
+  /// widget daftar yang ditampilkan kalau **[allowToSeePage] == true**. Widget yang ditampilkan adalah widget dengan indeks sesuai variable [showedPagesIndex]
   List<CarassiusResponsiveScaffold> pages;
 
   /// widget yang ditampilkan kalau **[allowToSeePage] == false**
@@ -16,7 +16,7 @@ class AuthorityScaffoldOptions{
 
   AuthorityScaffoldOptions({
     required this.allowToSeePage,
-    required this.authorityLevel,
+    required this.showedPagesIndex,
     required this.pages,
     required this.notAllowedPage
   }){
@@ -31,7 +31,7 @@ class AuthorityScaffoldOptions{
   static AuthorityScaffoldOptions singlePage({required Scaffold pagePortrait, required Scaffold pageLandscape}){
     return AuthorityScaffoldOptions(
         allowToSeePage: true,
-        authorityLevel: 0,
+        showedPagesIndex: 0,
         pages: [
           CarassiusResponsiveScaffold(
             portrait: pagePortrait,
