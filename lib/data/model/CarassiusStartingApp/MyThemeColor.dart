@@ -4,7 +4,12 @@ import 'package:flutter/material.dart';
 ///
 /// Semua warna disimpan dalam variable static
 ///
-/// **Note:** Jika warna default kurang, user bisa memasukkan warna baru ke dalam map "[warnaLain]"
+/// **Note:**
+/// * Jika warna default kurang, user bisa memasukkan warna baru ke dalam map "[warnaLain]"
+/// * User juga bisa langsung mengset ColorScheme sekaligus dengan fungsi "[setColorScheme]"
+///
+/// **Tips**
+/// Anda bisa menggunakan tool ini untuk menggenerate warna yang bagus : https://m3.material.io/theme-builder#/custom
 ///
 /// Daftar Warna Tersedia:
 /// * primary
@@ -16,8 +21,38 @@ import 'package:flutter/material.dart';
 /// * textBackground
 /// * textError
 class MyThemeColor{
+
+  /// apa theme theme color ini dibuat untuk theme light mode atau untuk theme dark mode
+  bool isLightTheme = true;
+
+  MyThemeColor({required this.isLightTheme}){}
+
   /// untuk menyimpan warna lain kalau warna default tidak cukup
   static Map<String, Color> warnaLain = {};
+
+  /// cuma untuk simpan color scheme kalau panggil fungsi [setColorScheme]
+  ColorScheme? storeColorScheme;
+
+  /// ada 2 cara menggunakan class ini
+  /// * pertama set warna satu persatu menggunakan fungsi setter lain seperti setPrimary().
+  /// * kedua langsung set ColorScheme menggunakan fungsi ini.
+  ///
+  /// **NOTE**
+  /// untuk menggenerate color scheme yang diperlukan fungsi ini, disarankan menggunakan tool berikut : https://m3.material.io/theme-builder#/custom
+  MyThemeColor setColorScheme(ColorScheme color_scheme){
+    storeColorScheme = color_scheme;
+
+    _primary = color_scheme.primary;
+    _secondary = color_scheme.secondary;
+    _background = color_scheme.background;
+    _error = color_scheme.error;
+    _textPrimary = color_scheme.onPrimary;
+    _textSecondary = color_scheme.onSecondary;
+    _textBackground = color_scheme.onBackground;
+    _textError = color_scheme.onError;
+
+    return this;
+  }
 
   Color _primary = Colors.green[900]!;
   /// warna utama aplikasi (bukan warna background)
@@ -94,21 +129,40 @@ class MyThemeColor{
     return this;
   }
 
-  ColorScheme colorScheme(BuildContext context){
+  ColorScheme colorScheme(){
 
-    var ret = Theme.of(context).colorScheme;
     return ColorScheme(
-        brightness: ret.brightness,
-        primary: _primary,
-        onPrimary: _textPrimary,
-        secondary: _secondary,
-        onSecondary: _textSecondary,
-        error: _error,
-        onError: _textError,
-        background: _background,
-        onBackground: _textBackground,
-        surface: _surface,
-        onSurface: _textSurface
+      brightness: isLightTheme ? Brightness.light : Brightness.dark,
+      primary: _primary,
+      onPrimary: _textPrimary,
+      primaryContainer: storeColorScheme?.primaryContainer,
+      onPrimaryContainer: storeColorScheme?.onPrimaryContainer,
+      secondary: _secondary,
+      onSecondary: _textSecondary,
+      secondaryContainer: storeColorScheme?.secondaryContainer,
+      onSecondaryContainer: storeColorScheme?.onSecondaryContainer,
+      tertiary: storeColorScheme?.tertiary,
+      onTertiary: storeColorScheme?.onTertiary,
+      tertiaryContainer: storeColorScheme?.tertiaryContainer,
+      onTertiaryContainer: storeColorScheme?.onTertiaryContainer,
+      error: _error,
+      errorContainer: storeColorScheme?.errorContainer,
+      onError: _textError,
+      onErrorContainer: storeColorScheme?.onErrorContainer,
+      background: _background,
+      onBackground: _textBackground,
+      surface: _surface,
+      onSurface: _textSurface,
+      surfaceVariant: storeColorScheme?.surfaceVariant,
+      onSurfaceVariant: storeColorScheme?.onSurfaceVariant,
+      outline: storeColorScheme?.outline,
+      onInverseSurface: storeColorScheme?.onInverseSurface,
+      inverseSurface: storeColorScheme?.inverseSurface,
+      inversePrimary: storeColorScheme?.inversePrimary,
+      shadow: storeColorScheme?.shadow,
+      surfaceTint: storeColorScheme?.surfaceTint,
+      outlineVariant: storeColorScheme?.outlineVariant,
+      scrim: storeColorScheme?.scrim,
     );
   }
 }

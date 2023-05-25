@@ -10,13 +10,18 @@ import 'data/model/CarassiusStartingApp/MyThemeColor.dart';
 
 //model ada di data/model/StartingApp
 class CarassiusStartingApp extends StatelessWidget {
-  const CarassiusStartingApp({Key? key, required this.routes, required this.colors, this.textTheme: null}) : super(key: key);
+  const CarassiusStartingApp({Key? key, required this.routes, required this.colorsLightTheme, required this.colorsDarkTheme, this.textTheme: null}) : super(key: key);
 
   /// tempat mendaftarkan semua route dan page yang digunakan di aplikasi ini
   final MyRoutes routes;
 
+  /// Warna kalau tidak di darkmode (theme default)
   /// tempat menyimpan warna-warna yang dipakai di aplikasi ini seperti warna primary, secondary, warna text, dll
-  final MyThemeColor colors;
+  final MyThemeColor colorsLightTheme;
+
+  /// Warna kalau sedang darkmode
+  /// tempat menyimpan warna-warna yang dipakai di aplikasi ini seperti warna primary, secondary, warna text, dll
+  final MyThemeColor colorsDarkTheme;
 
   /// text style yang dipakai text, dari body medium, title large, button, dll
   /// https://api.flutter.dev/flutter/material/TextTheme-class.html
@@ -28,9 +33,14 @@ class CarassiusStartingApp extends StatelessWidget {
     return MaterialApp(
       routes: routes.getRoutes(),
       theme: ThemeData(
-          colorScheme: colors.colorScheme(context),
+          colorScheme: colorsLightTheme.colorScheme(),
           useMaterial3: true,
-          textTheme: textTheme != null ? textTheme : null
+          textTheme: textTheme
+      ),
+      darkTheme: ThemeData(
+          colorScheme: colorsDarkTheme.colorScheme(),
+          useMaterial3: true,
+          textTheme: textTheme
       ),
     );
   }

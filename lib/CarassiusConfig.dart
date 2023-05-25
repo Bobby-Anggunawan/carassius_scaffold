@@ -1,5 +1,5 @@
 class CarassiusConfig{
-  static double paddingSmall = 10;
-  static double paddingNormal = 20;
-  static double paddingLarge = 30;
+  static double paddingSmall = 16;
+  static double paddingNormal = 24;
+  static double paddingLarge = 32;
 }

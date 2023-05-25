@@ -20,7 +20,8 @@ class MyApp extends StatelessWidget {
         routes: MyRoutes()
             .addRoutes("/", Page1())
             .addRoutes("/page_dua", Page2()),
-        colors: MyThemeColor()
+        colorsLightTheme: MyThemeColor(isLightTheme: true),
+        colorsDarkTheme: MyThemeColor(isLightTheme: false),
     );
   }
 }
