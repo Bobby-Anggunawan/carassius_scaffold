@@ -1,3 +1,4 @@
+import 'package:carassius_scaffold/UIStyle/CarassiusGetter.dart';
 import 'package:flutter/material.dart';
 
 import '../../UIStyle/CarassiusBoxDecoration.dart';
@@ -32,7 +33,7 @@ class CarassiusLoadingScaffold extends StatelessWidget {
           Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: CarassiusDecoration.transparanBlack(),
+            decoration: CarassiusGetter.boxDecoration().transparanBlack(),
           ),
 
           main

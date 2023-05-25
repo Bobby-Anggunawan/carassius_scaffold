@@ -18,6 +18,10 @@ know whether this package might be useful for them.
 
 TODO: List what your package can do. Maybe include images, gifs, or videos.
 
+* Kerangka dasar untuk semua aplikasi beserta setting route dan warna tema untuk darkmode di `CarassiusStartingApp`
+* Berbagai kerangka yang mempermudah dalam membangun ui dan widget seperti `CarassiusAuthorityScaffold`, `CarassiusLoadingScaffold`, dan `CarassiusResponsiveScaffold`
+* Mempermudah mengambil property aplikasi seperti **Warna Tema** yang di set, **Padding**, **BoxDecoration**, dan berbagai **TextStyle** yang digunakan tema yang di set(text button, teks normal, teks heading, dll) di dalam class `CarassiusGetter`
+
 ## Getting started
 
 TODO: List prerequisites and provide or point to information on how to
@@ -28,8 +32,25 @@ start using the package.
 TODO: Include short and useful examples for package users. Add longer examples
 to `/example` folder.
 
+### Struktur Dasar Aplikasi
+Untuk mulai menggunakan package ini, gunakan class `CarassiusStartingApp` di folder `main.dart` aplikasi yang dibuat. Contohnya
 ```dart
-const like = 'sample';
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return CarassiusStartingApp(
+      routes: MyRoutes()
+          .addRoutes("/", TestPage()),
+      colorsLightTheme: MyThemeColor(isLightTheme: true).setColorScheme(ServiceTaskConfig.lightColorScheme),
+      colorsDarkTheme: MyThemeColor(isLightTheme: false).setColorScheme(ServiceTaskConfig.darkColorScheme),
+    );
+  }
+}
 ```
 
 ## Additional information

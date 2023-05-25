@@ -1,6 +1,6 @@
 import 'package:carassius_scaffold/Pages/Scaffolds/CarassiusResponsiveScaffold.dart';
 import 'package:flutter/material.dart';
-import '../../CarassiusLib/CarassiusGetter.dart';
+import '../../UIStyle/CarassiusGetter.dart';
 
 class CarassiusAuthorityScaffold extends StatelessWidget {
   const CarassiusAuthorityScaffold({Key? key, required this.allowToSeePage, required this.pages, required this.authorityLevel, this.notAllowedPage: null}) : super(key: key);

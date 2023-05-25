@@ -1,5 +1,7 @@
-import 'package:carassius_scaffold/data/model/CarassiusLib/CarassiusGetter/CarassiusPadding.dart';
 import 'package:flutter/material.dart';
+
+import '../data/model/UIStyle/CarassiusGetter/CarassiusPadding.dart';
+import 'CarassiusBoxDecoration.dart';
 
 /// class ini berguna untuk mapping semua variable penting yang bisa diambil baik di dalam library ini sendiri atau dari library lain misalnya untuk mendapat warna theme saat ini
 class CarassiusGetter{
@@ -27,6 +29,10 @@ class CarassiusGetter{
 
   static CarassiusPadding padding(BuildContext context){
     return CarassiusPadding();
+  }
+
+  static CarassiusDecoration boxDecoration(){
+    return CarassiusDecoration();
   }
 
 }
