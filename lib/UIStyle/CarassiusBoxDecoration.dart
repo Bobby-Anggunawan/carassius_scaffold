@@ -1,26 +1,26 @@
-import 'package:carassius_scaffold/UIStyle/CarassiusThemeGetter.dart';
 import 'package:flutter/material.dart';
+import '../CarassiusLib/CarassiusGetter.dart';
 
 class CarassiusDecoration{
 
   static BoxDecoration roundedCornerColorPrimary(BuildContext context, {double borderRadius = 10}){
     return BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),
-        color: CarassiusThemeGetter.colorScheme(context).primary
+        color: CarassiusGetter.themeColor(context).primary
     );
   }
 
   static BoxDecoration roundedCornerColorSecondary(BuildContext context, {double borderRadius = 10}){
     return BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),
-        color: CarassiusThemeGetter.colorScheme(context).secondary
+        color: CarassiusGetter.themeColor(context).secondary
     );
   }
 
   static BoxDecoration roundedCornerColorSurface(BuildContext context, {double borderRadius = 10}){
     return BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),
-        color: CarassiusThemeGetter.colorScheme(context).surface
+        color: CarassiusGetter.themeColor(context).surface
     );
   }
 

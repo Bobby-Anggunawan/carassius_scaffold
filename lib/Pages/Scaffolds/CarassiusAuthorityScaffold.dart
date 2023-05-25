@@ -1,7 +1,6 @@
 import 'package:carassius_scaffold/Pages/Scaffolds/CarassiusResponsiveScaffold.dart';
 import 'package:flutter/material.dart';
-
-import '../../UIStyle/CarassiusThemeGetter.dart';
+import '../../CarassiusLib/CarassiusGetter.dart';
 
 class CarassiusAuthorityScaffold extends StatelessWidget {
   const CarassiusAuthorityScaffold({Key? key, required this.allowToSeePage, required this.pages, required this.authorityLevel, this.notAllowedPage: null}) : super(key: key);
@@ -38,7 +37,7 @@ class CarassiusAuthorityScaffold extends StatelessWidget {
     return Center(
       child: Text(
         "Tidak boleh melihat halaman ini",
-        style: CarassiusThemeGetter.textTheme(context).displayLarge,
+        style: CarassiusGetter.themeText(context).displayLarge,
       ),
     );
   }
