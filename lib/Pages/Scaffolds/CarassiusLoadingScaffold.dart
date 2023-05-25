@@ -27,16 +27,15 @@ class CarassiusLoadingScaffold extends StatelessWidget {
     if(isLoading && isLoadingOverlay){
       return Stack(
         children: [
-
-          loadingWidget ?? CarassiusLoadingPage(),
+          main,
 
           Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: CarassiusGetter.boxDecoration().transparanBlack(),
+            decoration: CarassiusGetter.boxDecoration().transparanScrim(context),
           ),
 
-          main
+          loadingWidget ?? CarassiusLoadingPage(),
         ],
       );
     }

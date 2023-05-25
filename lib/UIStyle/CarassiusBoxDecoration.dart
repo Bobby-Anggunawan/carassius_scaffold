@@ -55,6 +55,16 @@ class CarassiusDecoration{
     );
   }
 
+  /// biasanya digunakan untuk latar belakang dialog box(warna hitam transparan)
+  /// agrument [opacity] diisi dengan nilai dari 0 sampi 1, defaultnya adalah 0.6
+  /// **Note** warna scrim sebenarnya tidak transparan. Nilai transparan harus dimasukkan sendiri. Jadi value default 0.6 bukan saran dari material design
+  BoxDecoration transparanScrim(BuildContext context, {double opacity = 0.6, double borderRadius = 0}){
+    return BoxDecoration(
+      borderRadius: BorderRadius.circular(borderRadius),
+      color: CarassiusGetter.themeColor(context).scrim.withOpacity(opacity),
+    );
+  }
+
   /// agrument [shadowOpacity] diisi dengan nilai dari 0 sampi 1, defaultnya adalah 0.5. Kalau nilainya 0, bayangan jadi hitam pekat
   BoxDecoration withShadowWhiteContainer({double shadowOpacity = 0.5, double borderRadius = 10}){
     return BoxDecoration(
