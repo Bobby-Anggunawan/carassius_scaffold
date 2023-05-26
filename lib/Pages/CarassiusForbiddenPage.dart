@@ -13,40 +13,46 @@ class CarassiusForbiddenPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Container(
-          decoration: CarassiusGetter.boxDecoration().materialColorSurfaceRoundedCorner(context),
-          child: Flex(
-            direction: Axis.vertical,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Builder(builder: (context){
-                if(pesan == null){
-                  return Text(
-                    "Anda tidak bisa melihat halaman ini",
-                    style: CarassiusGetter.themeText(context).displayLarge,
-                  );
-                }
-                else{
-                  return Text(
-                    "Anda tidak bisa melihat halaman ini karena :",
-                    style: CarassiusGetter.themeText(context).displayLarge,
-                  );
-                }
-              }),
+        child: Padding(
+          padding: EdgeInsets.all(CarassiusGetter.padding().getAutoPadding(context)),
+          child: Container(
+            decoration: CarassiusGetter.boxDecoration().materialColorSurfaceRoundedCorner(context),
+            padding: EdgeInsets.all(CarassiusGetter.padding().getAutoPadding(context)),
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                Builder(builder: (context){
+                  if(pesan == null){
+                    return Text(
+                      "Anda tidak bisa melihat halaman ini",
+                      style: CarassiusGetter.themeText(context).displayLarge,
+                      textAlign: TextAlign.center,
+                    );
+                  }
+                  else{
+                    return Text(
+                      "Anda tidak bisa melihat halaman ini karena :",
+                      style: CarassiusGetter.themeText(context).displayLarge,
+                      textAlign: TextAlign.center,
+                    );
+                  }
+                }),
 
-              Builder(builder: (context){
-                if(pesan != null){
-                  return Text(
-                    pesan!,
-                    style: CarassiusGetter.themeText(context).displaySmall,
-                  );
-                }
-                else{
-                  return SizedBox();
-                }
-              }),
+                Builder(builder: (context){
+                  if(pesan != null){
+                    return Text(
+                      pesan!,
+                      style: CarassiusGetter.themeText(context).displaySmall,
+                      textAlign: TextAlign.center,
+                    );
+                  }
+                  else{
+                    return SizedBox();
+                  }
+                }),
 
-            ],
+              ],
+            ),
           ),
         ),
       ),

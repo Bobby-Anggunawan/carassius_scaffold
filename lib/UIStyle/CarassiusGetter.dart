@@ -27,7 +27,7 @@ class CarassiusGetter{
     return _textTheme!;
   }
 
-  static CarassiusPadding padding(BuildContext context){
+  static CarassiusPadding padding(){
     return CarassiusPadding();
   }
 
