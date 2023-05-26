@@ -3,21 +3,21 @@ import 'CarassiusGetter.dart';
 
 class CarassiusDecoration{
 
-  BoxDecoration roundedCornerColorPrimary(BuildContext context, {double borderRadius = 10}){
+  BoxDecoration colorPrimaryRoundedCorner(BuildContext context, {double borderRadius = 10}){
     return BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),
         color: CarassiusGetter.themeColor(context).primary
     );
   }
 
-  BoxDecoration roundedCornerColorSecondary(BuildContext context, {double borderRadius = 10}){
+  BoxDecoration colorSecondaryRoundedCorner(BuildContext context, {double borderRadius = 10}){
     return BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),
         color: CarassiusGetter.themeColor(context).secondary
     );
   }
 
-  BoxDecoration roundedCornerColorSurface(BuildContext context, {double borderRadius = 10}){
+  BoxDecoration colorSurfaceRoundedCorner(BuildContext context, {double borderRadius = 10}){
     return BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),
         color: CarassiusGetter.themeColor(context).surface
@@ -25,14 +25,14 @@ class CarassiusDecoration{
   }
 
   /// note, sebaiknya gunakan [roundedCornerColorSurface]
-  BoxDecoration roundedCornerColorWhite({double borderRadius = 10}){
+  BoxDecoration colorWhiteRoundedCorner({double borderRadius = 10}){
     return BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),
         color: Colors.white
     );
   }
 
-  BoxDecoration roundedCornerColorBlack({double borderRadius = 10}){
+  BoxDecoration colorBlackRoundedCorner({double borderRadius = 10}){
     return BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),
         color: Colors.black
