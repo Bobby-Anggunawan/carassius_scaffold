@@ -3,21 +3,21 @@ import 'CarassiusGetter.dart';
 
 class CarassiusDecoration{
 
-  BoxDecoration colorPrimaryRoundedCorner(BuildContext context, {double borderRadius = 10}){
+  BoxDecoration materialColorPrimaryRoundedCorner(BuildContext context, {double borderRadius = 10}){
     return BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),
         color: CarassiusGetter.themeColor(context).primary
     );
   }
 
-  BoxDecoration colorSecondaryRoundedCorner(BuildContext context, {double borderRadius = 10}){
+  BoxDecoration materialColorSecondaryRoundedCorner(BuildContext context, {double borderRadius = 10}){
     return BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),
         color: CarassiusGetter.themeColor(context).secondary
     );
   }
 
-  BoxDecoration colorSurfaceRoundedCorner(BuildContext context, {double borderRadius = 10}){
+  BoxDecoration materialColorSurfaceRoundedCorner(BuildContext context, {double borderRadius = 10}){
     return BoxDecoration(
         borderRadius: BorderRadius.circular(borderRadius),
         color: CarassiusGetter.themeColor(context).surface
@@ -58,7 +58,7 @@ class CarassiusDecoration{
   /// biasanya digunakan untuk latar belakang dialog box(warna hitam transparan)
   /// agrument [opacity] diisi dengan nilai dari 0 sampi 1, defaultnya adalah 0.6
   /// **Note** warna scrim sebenarnya tidak transparan. Nilai transparan harus dimasukkan sendiri. Jadi value default 0.6 bukan saran dari material design
-  BoxDecoration transparanScrim(BuildContext context, {double opacity = 0.6, double borderRadius = 0}){
+  BoxDecoration materialTransparanScrim(BuildContext context, {double opacity = 0.6, double borderRadius = 0}){
     return BoxDecoration(
       borderRadius: BorderRadius.circular(borderRadius),
       color: CarassiusGetter.themeColor(context).scrim.withOpacity(opacity),

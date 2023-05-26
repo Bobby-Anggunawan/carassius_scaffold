@@ -32,7 +32,7 @@ class CarassiusLoadingScaffold extends StatelessWidget {
           Container(
             width: double.infinity,
             height: double.infinity,
-            decoration: CarassiusGetter.boxDecoration().transparanScrim(context),
+            decoration: CarassiusGetter.boxDecoration().materialTransparanScrim(context),
           ),
 
           loadingWidget ?? CarassiusLoadingPage(),

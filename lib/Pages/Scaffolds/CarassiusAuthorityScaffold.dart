@@ -1,3 +1,4 @@
+import 'package:carassius_scaffold/Pages/CarassiusForbiddenPage.dart';
 import 'package:carassius_scaffold/Pages/Scaffolds/CarassiusResponsiveScaffold.dart';
 import 'package:flutter/material.dart';
 import '../../UIStyle/CarassiusGetter.dart';
@@ -32,13 +33,6 @@ class CarassiusAuthorityScaffold extends StatelessWidget {
       return notAllowedPage!;
     }
 
-    //TODO: BUAT HALAMAN default YANG LEBIH BAGUS
-    // tampilan widget default [notAllowed]
-    return Center(
-      child: Text(
-        "Tidak boleh melihat halaman ini",
-        style: CarassiusGetter.themeText(context).displayLarge,
-      ),
-    );
+    return CarassiusForbiddenPage(pesan: null);
   }
 }
