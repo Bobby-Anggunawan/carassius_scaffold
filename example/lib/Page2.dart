@@ -11,6 +11,7 @@ class Page2 extends StatelessWidget {
     return CarassiusScaffold(
         loadingScaffoldOption: LoadingScaffoldOption.noLoading(),
         authorityScaffoldOptions: AuthorityScaffoldOptions.singlePage(
+            pageSameAllOrientation: null,
             pagePortrait: Scaffold(
               body: Center(
                 child: Text("page2Portrait"),

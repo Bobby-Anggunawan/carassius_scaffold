@@ -27,8 +27,13 @@ class AuthorityScaffoldOptions{
     }
   }
 
-  /// dipakai kalau hanya ada 1 halaman untuk semua user(tidak ada user dibatasi mengakses halaman ini)
-  static AuthorityScaffoldOptions singlePage({required Scaffold pagePortrait, required Scaffold pageLandscape}){
+  /// dipakai kalau hanya ada 1 halaman untuk semua user(tidak ada user dibatasi mengakses halaman ini).
+  ///
+  /// **Note**, untuk mengerti parameter fungsi ini, baca parameter class [CarassiusResponsiveScaffold]. Intinya kalau:
+  /// * pageSameAllOrientation diisi, pagePortrait dan pageLandscape boleh null
+  /// * Sebaliknya, kalau pageSameAllOrientation null, pagePortrait dan pageLandscape wajib diisi keduanya
+  static AuthorityScaffoldOptions singlePage({required Scaffold? pageSameAllOrientation, required Scaffold? pagePortrait, required Scaffold? pageLandscape}){
+
     return AuthorityScaffoldOptions(
         allowToSeePage: true,
         showedPagesIndex: 0,
@@ -36,6 +41,7 @@ class AuthorityScaffoldOptions{
           CarassiusResponsiveScaffold(
             portrait: pagePortrait,
             landscape: pageLandscape,
+            sameForAllOrientation: pageSameAllOrientation,
           )
         ],
         notAllowedPage: null
