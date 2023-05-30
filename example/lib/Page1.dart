@@ -1,3 +1,4 @@
+import 'package:carassius_scaffold/Lib/CarassiusToString.dart';
 import 'package:carassius_scaffold/Pages/CarassiusScaffold.dart';
 import 'package:carassius_scaffold/data/model/Pages/CarassiusScaffold/AuthorityScaffoldOptions.dart';
 import 'package:carassius_scaffold/data/model/Pages/CarassiusScaffold/LoadingScaffoldOption.dart';
@@ -19,7 +20,7 @@ class Page1 extends StatelessWidget {
             ),
             pageLandscape: Scaffold(
               body: Center(
-                child: Text("page1Landscape")
+                child: Text(CarassiusToString.addSpaceBetweenEachCapital("IkanAsinMakananKucing"))
               ),
               floatingActionButton: FloatingActionButton(
                 child: Text("Ke Page 2"),
