@@ -13,7 +13,7 @@ class CarassiusAuthorityScaffold extends StatelessWidget {
   /// indeks dari widget yang ditampilkan di variable [pages]
   final int showedPagesIndex;
   /// widget daftar yang ditampilkan kalau **[allowToSeePage] == true**. Widget yang ditampilkan adalah widget dengan indeks sesuai variable [showedPagesIndex]
-  final List<CarassiusResponsiveScaffold> pages;
+  final List<Widget> pages;
 
   /// widget yang ditampilkan kalau **[allowToSeePage] == false**
   final Widget? notAllowedPage;
