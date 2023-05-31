@@ -30,7 +30,7 @@ class CarassiusNetwork{
   /// * header: isi header dari request ini. Gunakan fungsi BaseRequestHeader().addKey() untuk menambah key ke header ini
   /// * body: isi body dari request ini(dengan tipe form). Gunakan fungsi BaseRequestBody().addKey() untuk menambah key ke body ini
   /// * bodyRaw<optional>: kalau isi body bukan form, gunakan parameter bodyRaw untuk mengisi data body request ini(dalam string, tidak bisa mengirim file)
-  static dynamic baseRequest(String url, BaseRequestUriParam uriParam, RequestMethod method, BaseRequestHeader? header, BaseRequestBody? body, {String? bodyRaw = null})async{
+  static Future<dynamic> baseRequest(String url, BaseRequestUriParam uriParam, RequestMethod method, BaseRequestHeader? header, BaseRequestBody? body, {String? bodyRaw = null})async{
     var request = http.Request(method.name, Uri.parse(url+uriParam.uriParam));
 
     if(body!=null) request.bodyFields = body.body;

@@ -23,6 +23,7 @@ TODO: List what your package can do. Maybe include images, gifs, or videos.
 * `CarassiusScaffold` yang merupakan kerangka dasar yang disarankan untuk membuat sebuah page yang dimasukkan ke dalam route `CarassiusStartingApp`. `CarassiusScaffold` sudah mengatur berbagai hal seperti animasi loading, perubahan tampilan saat orientasi device berubah, tampilan page yang berbeda untuk tiap role user menggunakan widget `CarassiusResponsiveScaffold`. `CarassiusResponsiveScaffold` juga dapat digunakan untuk hal seperti mapping halaman jika menggunakan widget seperti navigation tab atau navigation rail karena bisa menampilkan tampilan widget berbeda(kayak sub dari route).
 * Mempermudah mengambil property aplikasi seperti **Warna Tema** yang di set, **Padding**, **BoxDecoration**, dan berbagai **TextStyle** yang digunakan tema yang di set(text button, teks normal, teks heading, dll) di dalam class `CarassiusGetter`
 * `CarassiusToString` berisi berbagai fungsi untuk mengkonversi string atau data lain ke string dengan format tertentu
+* `CarassiusToDateTime`
 * `CarassiusNetwork` berisi fungsi untuk melakukan request hanya dengan 1 baris kode
 
 ## Getting started
