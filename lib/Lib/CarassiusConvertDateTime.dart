@@ -39,6 +39,43 @@ class CarassiusConvertDateTime{
   static String toStringJustTime(DateTime? data, bool showWithSecond, {String seperator = ":", String showIfNull = "-"}){
     if(data == null) return showIfNull;
 
+    String? trailFrom;
+    var nowTime = DateTime.now();
+
+    if(nowTime.day != data.day || nowTime.month != data.month || nowTime.year != data.year){
+      var testBesok = nowTime.add(Duration(days: 1));
+      var testLusa = nowTime.add(Duration(days: 2));
+      var testKemarin = nowTime.subtract(Duration(days: 1));
+      if(testBesok.year == data.year && testBesok.month == data.month && testBesok.day == data.day){
+        trailFrom = "Besok";
+      }
+      else if(testLusa.year == data.year && testLusa.month == data.month && testLusa.day == data.day){
+        trailFrom = "Lusa";
+      }
+      else if(testKemarin.year == data.year && testKemarin.month == data.month && testKemarin.day == data.day){
+        trailFrom = "Kemarin";
+      }
+      else{
+        trailFrom = "${CarassiusConvertInt.toStringTwoDigitNumber(data.day)} ${toStringMonthName(data.month)}";
+      }
+
+      trailFrom = trailFrom+" ";
+    }
+
+    ///========================
+
+    if(showWithSecond){
+      return "${trailFrom ?? ""}${CarassiusConvertInt.toStringTwoDigitNumber(data.hour)}${seperator}${CarassiusConvertInt.toStringTwoDigitNumber(data.minute)}${seperator}${CarassiusConvertInt.toStringTwoDigitNumber(data.second)}";
+    }
+    return "${trailFrom ?? ""}${CarassiusConvertInt.toStringTwoDigitNumber(data.hour)}${seperator}${CarassiusConvertInt.toStringTwoDigitNumber(data.minute)}";
+  }
+
+  /// misalnya data yang di pass ke fungsi ini tanggal 1 sedang kan sekarang tanggal 2, fungsi ini akan mereturn "Kemarin jj:mm"
+  ///
+  /// Secara garis besar, penggunaannya sama dengan [toStringJustTime()]
+  static String toStringJustTimeWithDateIfNotToday(DateTime? data, bool showWithSecond, {String seperator = ":", String showIfNull = "-"}){
+    if(data == null) return showIfNull;
+
     if(showWithSecond){
       return "${CarassiusConvertInt.toStringTwoDigitNumber(data.hour)}${seperator}${CarassiusConvertInt.toStringTwoDigitNumber(data.minute)}${seperator}${CarassiusConvertInt.toStringTwoDigitNumber(data.second)}";
     }
@@ -56,13 +93,56 @@ class CarassiusConvertDateTime{
       return showIfNull;
     }
 
-    //cek apakah dateFrom dan dateTo ada di hari yang sama
-    if(dateFrom.day != dateTo.day || dateFrom.month != dateTo.month || dateFrom.year != dateTo.year){
-      if(showMonthName){
-        return "${toStringJustDateWithDateName(dateFrom)}${seperator}${toStringJustDateWithDateName(dateTo)}";
+    String? trailFrom;
+    String? trailTo;
+
+    var nowTime = DateTime.now();
+
+    var testBesok = nowTime.add(Duration(days: 1));
+    var testLusa = nowTime.add(Duration(days: 2));
+    var testKemarin = nowTime.subtract(Duration(days: 1));
+
+    if(testBesok.year == dateFrom.year && testBesok.month == dateFrom.month && testBesok.day == dateFrom.day){
+      trailFrom = "Besok";
+    }
+    else if(testLusa.year == dateFrom.year && testLusa.month == dateFrom.month && testLusa.day == dateFrom.day){
+      trailFrom = "Lusa";
+    }
+    else if(testKemarin.year == dateFrom.year && testKemarin.month == dateFrom.month && testKemarin.day == dateFrom.day){
+      trailFrom = "Kemarin";
+    }
+
+
+    if(testBesok.year == dateTo.year && testBesok.month == dateTo.month && testBesok.day == dateTo.day){
+      trailTo = "Besok";
+    }
+    else if(testLusa.year == dateTo.year && testLusa.month == dateTo.month && testLusa.day == dateTo.day){
+      trailTo = "Lusa";
+    }
+    else if(testKemarin.year == dateTo.year && testKemarin.month == dateTo.month && testKemarin.day == dateTo.day){
+      trailTo = "Kemarin";
+    }
+
+    if(dateFrom.year != dateTo.year || dateFrom.month != dateTo.month || dateFrom.day != dateTo.day){
+
+      if(trailFrom != null || trailTo != null){
+        String addTimeFrom = (trailFrom != null) ? " "+toStringJustTime(dateFrom, false) : "";
+        String addTimeTo = (trailTo != null) ? " "+toStringJustTime(dateTo, false) : "";
+
+        String istrailFromNull = "${CarassiusConvertInt.toStringTwoDigitNumber(dateFrom.day)} ${toStringMonthName(dateFrom.month)}";
+        String istrailToNull = "${CarassiusConvertInt.toStringTwoDigitNumber(dateTo.day)} ${toStringMonthName(dateTo.month)}";
+
+        //TODO!!! BUG, harusnya return yan g dicomment dibawah yang benar, tapi entah kenapa yang gak di comment yang benar
+        //return "${trailFrom ?? istrailFromNull}${addTimeFrom} ${seperator} ${"trailTo" ?? istrailToNull}${addTimeTo}";
+        return "${trailFrom ?? istrailFromNull}${addTimeFrom} ${seperator} ${addTimeTo}";
       }
       else{
-        return "${toStringJustDateAllNumber(dateFrom)}${seperator}${toStringJustDateAllNumber(dateTo)}";
+        if(showMonthName){
+          return "${trailFrom ?? toStringJustDateWithDateName(dateFrom)}${seperator}${trailTo ?? toStringJustDateWithDateName(dateTo)}";
+        }
+        else{
+          return "${trailFrom ?? toStringJustDateAllNumber(dateFrom)}${seperator}${trailTo ?? toStringJustDateAllNumber(dateTo)}";
+        }
       }
     }
 
