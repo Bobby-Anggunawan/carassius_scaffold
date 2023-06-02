@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
 import '../data/model/Lib/CarassiusNetwork/BaseRequestBody.dart';
 import '../data/model/Lib/CarassiusNetwork/BaseRequestHeader.dart';
@@ -30,8 +31,14 @@ class CarassiusNetwork{
   /// * header: isi header dari request ini. Gunakan fungsi BaseRequestHeader().addKey() untuk menambah key ke header ini
   /// * body: isi body dari request ini(dengan tipe form). Gunakan fungsi BaseRequestBody().addKey() untuk menambah key ke body ini
   /// * bodyRaw<optional>: kalau isi body bukan form, gunakan parameter bodyRaw untuk mengisi data body request ini(dalam string, tidak bisa mengirim file)
-  static Future<dynamic> baseRequest(String url, BaseRequestUriParam uriParam, RequestMethod method, BaseRequestHeader? header, BaseRequestBody? body, {String? bodyRaw = null})async{
-    var request = http.Request(method.name, Uri.parse(url+uriParam.uriParam));
+  static Future<dynamic> baseRequest(String url, BaseRequestUriParam? uriParam, RequestMethod method, BaseRequestHeader? header, BaseRequestBody? body, {String? bodyRaw = null})async{
+    late Request request;
+    if(uriParam != null){
+      request = http.Request(method.name, Uri.parse(url+uriParam.uriParam));
+    }
+    else{
+      request = http.Request(method.name, Uri.parse(url));
+    }
 
     if(body!=null) request.bodyFields = body.body;
     else if(bodyRaw != null) request.body = bodyRaw;
