@@ -1,5 +1,5 @@
 /// class berisi berbagai metode untuk mengkonversi berbagai tipe data lain ke stringt dengan format tertentu
-class CarassiusToString{
+class CarassiusConvertString{
   /// misalnya string "IkanAsin" bakal diubah jadi "Ikan Asin"(ditambah spasi).
   /// Berguna misalnya punya enum {BaksoBakar, IkanAsin, BakpauDaging} terus ingin menampilkan isi enum pakai foreach
   static String addSpaceBetweenEachCapital(String valueToAddSpace){
