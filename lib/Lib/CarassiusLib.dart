@@ -9,7 +9,7 @@ class CarassiusLib{
   ///
   /// **NOTE**
   ///
-  /// parameter hex, diisi seperti "0xFF92001A". Jadi dimulai dari "0x" dilanjutkan angka dalam hexadecimal
+  /// parameter hex, diisi seperti "0xFF92001A". Jadi dimulai dari "0xFF" dilanjutkan angka dalam hexadecimal
   static MaterialColor colorFromHex(int hex) {
 
     var color = Color(hex);

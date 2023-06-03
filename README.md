@@ -31,6 +31,11 @@ TODO: List what your package can do. Maybe include images, gifs, or videos.
 Class yang berisi fungsi fungsi penting tapi belum dapat dikategorikan. Fungsi di dalamnya antara lain:
 * `colorFromHex()`
 
+### CUI
+
+daftar berbagai widget yang ada di dalam library ini
+* `CUIDialogMaterialDateTimePicker()`: Menampilkan dialog material design yang mengambil input datetime(tangga dan jam)
+
 ## Getting started
 
 TODO: List prerequisites and provide or point to information on how to
