@@ -26,6 +26,11 @@ TODO: List what your package can do. Maybe include images, gifs, or videos.
 * `CarassiusToDateTime`
 * `CarassiusNetwork` berisi fungsi untuk melakukan request hanya dengan 1 baris kode
 
+### CarassiusLib
+
+Class yang berisi fungsi fungsi penting tapi belum dapat dikategorikan. Fungsi di dalamnya antara lain:
+* `colorFromHex()`
+
 ## Getting started
 
 TODO: List prerequisites and provide or point to information on how to

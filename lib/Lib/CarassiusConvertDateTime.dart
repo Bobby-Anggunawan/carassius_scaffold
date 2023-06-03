@@ -39,6 +39,19 @@ class CarassiusConvertDateTime{
   static String toStringJustTime(DateTime? data, bool showWithSecond, {String seperator = ":", String showIfNull = "-"}){
     if(data == null) return showIfNull;
 
+    if(showWithSecond){
+      return "${CarassiusConvertInt.toStringTwoDigitNumber(data.hour)}${seperator}${CarassiusConvertInt.toStringTwoDigitNumber(data.minute)}${seperator}${CarassiusConvertInt.toStringTwoDigitNumber(data.second)}";
+    }
+    return "${CarassiusConvertInt.toStringTwoDigitNumber(data.hour)}${seperator}${CarassiusConvertInt.toStringTwoDigitNumber(data.minute)}";
+
+  }
+
+  /// misalnya data yang di pass ke fungsi ini tanggal 1 sedang kan sekarang tanggal 2, fungsi ini akan mereturn "Kemarin jj:mm"
+  ///
+  /// Secara garis besar, penggunaannya sama dengan [toStringJustTime()]
+  static String toStringJustTimeWithDateIfNotToday(DateTime? data, bool showWithSecond, {String seperator = ":", String showIfNull = "-"}){
+    if(data == null) return showIfNull;
+
     String? trailFrom;
     var nowTime = DateTime.now();
 
@@ -68,18 +81,6 @@ class CarassiusConvertDateTime{
       return "${trailFrom ?? ""}${CarassiusConvertInt.toStringTwoDigitNumber(data.hour)}${seperator}${CarassiusConvertInt.toStringTwoDigitNumber(data.minute)}${seperator}${CarassiusConvertInt.toStringTwoDigitNumber(data.second)}";
     }
     return "${trailFrom ?? ""}${CarassiusConvertInt.toStringTwoDigitNumber(data.hour)}${seperator}${CarassiusConvertInt.toStringTwoDigitNumber(data.minute)}";
-  }
-
-  /// misalnya data yang di pass ke fungsi ini tanggal 1 sedang kan sekarang tanggal 2, fungsi ini akan mereturn "Kemarin jj:mm"
-  ///
-  /// Secara garis besar, penggunaannya sama dengan [toStringJustTime()]
-  static String toStringJustTimeWithDateIfNotToday(DateTime? data, bool showWithSecond, {String seperator = ":", String showIfNull = "-"}){
-    if(data == null) return showIfNull;
-
-    if(showWithSecond){
-      return "${CarassiusConvertInt.toStringTwoDigitNumber(data.hour)}${seperator}${CarassiusConvertInt.toStringTwoDigitNumber(data.minute)}${seperator}${CarassiusConvertInt.toStringTwoDigitNumber(data.second)}";
-    }
-    return "${CarassiusConvertInt.toStringTwoDigitNumber(data.hour)}${seperator}${CarassiusConvertInt.toStringTwoDigitNumber(data.minute)}";
   }
 
   /// membuat string timespan dari 2 datetime misalnya 10 Jan sampai 11 Apr atau 11:30 sampai 12:37
@@ -132,9 +133,9 @@ class CarassiusConvertDateTime{
         String istrailFromNull = "${CarassiusConvertInt.toStringTwoDigitNumber(dateFrom.day)} ${toStringMonthName(dateFrom.month)}";
         String istrailToNull = "${CarassiusConvertInt.toStringTwoDigitNumber(dateTo.day)} ${toStringMonthName(dateTo.month)}";
 
-        //TODO!!! BUG, harusnya return yan g dicomment dibawah yang benar, tapi entah kenapa yang gak di comment yang benar
-        //return "${trailFrom ?? istrailFromNull}${addTimeFrom} ${seperator} ${"trailTo" ?? istrailToNull}${addTimeTo}";
-        return "${trailFrom ?? istrailFromNull}${addTimeFrom} ${seperator} ${addTimeTo}";
+        //TODO!!! BUG, harusnya return yang dicomment dibawah yang benar, tapi entah kenapa yang gak di comment yang benar
+        return "${trailFrom ?? istrailFromNull}${addTimeFrom} ${seperator} ${trailTo ?? istrailToNull}${addTimeTo}";
+        //return "${trailFrom ?? istrailFromNull}${addTimeFrom} ${seperator} ${addTimeTo}";
       }
       else{
         if(showMonthName){
