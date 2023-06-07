@@ -3,11 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class CarLoginPagePasswordLandscape extends StatefulWidget {
-  const CarLoginPagePasswordLandscape({Key? key, required this.loginFunction, required this.backgroundImageResourcePath}) : super(key: key);
+  const CarLoginPagePasswordLandscape({Key? key, required this.pageTitle, required this.linkToOtherPage, required this.loginFunction, required this.backgroundImageResourcePath}) : super(key: key);
 
   final String? backgroundImageResourcePath;
 
+  final String pageTitle;
+
   final Function(String username, String password) loginFunction;
+
+  final Widget? linkToOtherPage;
 
   @override
   State<CarLoginPagePasswordLandscape> createState() => _CarLoginPagePasswordLandscapeState();
@@ -48,7 +52,7 @@ class _CarLoginPagePasswordLandscapeState extends State<CarLoginPagePasswordLand
                           children: [
                             Center(
                               child: Text(
-                                "Login/Register",
+                                widget.pageTitle,
                                 style: TextStyle(
                                     fontSize: 30,
                                     fontWeight: FontWeight.bold
@@ -107,7 +111,7 @@ class _CarLoginPagePasswordLandscapeState extends State<CarLoginPagePasswordLand
 
                             ),
                             Padding(padding: EdgeInsets.only(top: 30)),
-                            ElevatedButton(
+                            FilledButton(
                                 onPressed: (){
                                   if(myViewModel.username == null || myViewModel.password == null){
                                     //ugiugui
@@ -117,8 +121,18 @@ class _CarLoginPagePasswordLandscapeState extends State<CarLoginPagePasswordLand
                                     widget.loginFunction(myViewModel.username!, myViewModel.password!);
                                   }
                                 },
-                                child: Text("Login")
-                            )
+                                child: Text(widget.pageTitle)
+                            ),
+
+                            Padding(padding: EdgeInsets.only(top: 30)),
+
+                            Builder(builder: (cntx){
+                              if(widget.linkToOtherPage != null){
+                                return widget.linkToOtherPage!;
+                              }
+
+                              return SizedBox();
+                            })
                           ],
                         ),
                       ),

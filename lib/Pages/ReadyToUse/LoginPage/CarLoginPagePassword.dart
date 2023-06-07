@@ -7,7 +7,10 @@ import 'CarLoginPagePasswordLandscape.dart';
 import 'CarLoginPageViewModel.dart';
 
 class CarLoginPagePassword extends StatelessWidget {
-  const CarLoginPagePassword({Key? key, required this.loginFunction, required this.changeUsernameToEmail, required this.usernameEmailURL, required this.backgroundImageResourcePath}) : super(key: key);
+  const CarLoginPagePassword({Key? key, required this.loginFunction, this.pageTitle : "Login", required this.linkToOtherPage, required this.changeUsernameToEmail, this.usernameEmailURL: "salties.com", required this.backgroundImageResourcePath}) : super(key: key);
+
+  /// title yang ditampilkan di halaman ini (diatas textfield username dan tombol dibawah password)
+  final String pageTitle;
 
   /// background image yang ingin ditampilkan di halaman login ini
   final String? backgroundImageResourcePath;
@@ -21,6 +24,9 @@ class CarLoginPagePassword extends StatelessWidget {
   /// kalau misalnya login pakai firebase auth tipe password, usernamenya wajib email. Kalau ini true, otomatis menambah @+[usernameEmailURL] di belakang username yang dimasukkan
   final bool changeUsernameToEmail;
 
+  /// misalnya untuk buat teks button untuk mengarahkan user ke halaman signup
+  final Widget? linkToOtherPage;
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -28,8 +34,8 @@ class CarLoginPagePassword extends StatelessWidget {
         builder: (context, child){
           return CarassiusResponsiveScaffold(
               sameForAllOrientation: null,
-              portrait: CarLoginPagePasswordLandscape(loginFunction: loginFunction, backgroundImageResourcePath: backgroundImageResourcePath,),
-              landscape: CarassiusForbiddenPage(pesan: 'Halaman ini belum dibuat',)
+              portrait: CarassiusForbiddenPage(pesan: 'Halaman ini belum dibuat',),
+              landscape: CarLoginPagePasswordLandscape(loginFunction: loginFunction, pageTitle: pageTitle, linkToOtherPage: linkToOtherPage, backgroundImageResourcePath: backgroundImageResourcePath,)
           );
         }
     );
