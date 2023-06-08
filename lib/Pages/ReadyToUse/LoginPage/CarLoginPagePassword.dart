@@ -30,7 +30,7 @@ class CarLoginPagePassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (context) => CarLoginPageViewModel(changeUsernameToEmail: true),
+        create: (context) => CarLoginPageViewModel(changeUsernameToEmail: changeUsernameToEmail),
         builder: (context, child){
           return CarassiusResponsiveScaffold(
               sameForAllOrientation: null,
