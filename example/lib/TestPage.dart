@@ -1,4 +1,5 @@
 import 'package:carassius_scaffold/Pages/ReadyToUse/AccountInfoPage/CarAccountInfoPage.dart';
+import 'package:carassius_scaffold/UIStyle/Widget/CUIDialogFullscreen.dart';
 import 'package:carassius_scaffold/data/model/Pages/ReadyToUse/AccountInfoPage/CarAccountInfoPage/AccountInfo.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +18,15 @@ class TestPage extends StatelessWidget {
         "yeremia.blog@gmail.com"
       ),
       logOut: (){
-        print("tombol logout ditekan");
+        CUIDialogFullscreen(
+          context: context,
+          onConfirm: (){print("Klik Confirm");},
+          penjelasanDialog: "ini adalah dialog test",
+          judulDataDialog: DateTime.now().toIso8601String(),
+            content: Center(
+              child: Text("INI CONTENT DARI DIALOG INI"),
+            )
+        );
       },
 
     );
