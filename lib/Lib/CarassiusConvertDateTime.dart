@@ -15,7 +15,7 @@ class CarassiusConvertDateTime{
   /// **Note**
   /// * karakter separator default adalah "-". Karakter ini bisa diganti dengan menset parameter [separator]
   /// * kalau data == null, fungsi ini akan mengembalikan string yang di set di parameter [showIfNull].
-  static String toStringJustDateAllNumber(DateTime? data, {String seperator = "-", String showIfNull = "-"}){
+  static String? toStringJustDateAllNumber(DateTime? data, {String seperator = "-", String? showIfNull = "-"}){
     if(data == null) return showIfNull;
     return "${CarassiusConvertInt.toStringTwoDigitNumber(data.day)}${seperator}${CarassiusConvertInt.toStringTwoDigitNumber(data.month)}${seperator}${data.year}";
   }
@@ -25,7 +25,7 @@ class CarassiusConvertDateTime{
   /// **Note**
   /// * karakter separator default adalah " ". Karakter ini bisa diganti dengan menset parameter [separator]
   /// * kalau data == null, fungsi ini akan mengembalikan string yang di set di parameter [showIfNull].
-  static String toStringJustDateWithDateName(DateTime? data, {String seperator = " ", String showIfNull = "-"}){
+  static String? toStringJustDateWithDateName(DateTime? data, {String seperator = " ", String? showIfNull = "-"}){
     if(data == null) return showIfNull;
     return "${CarassiusConvertInt.toStringTwoDigitNumber(data.day)}${seperator}${toStringMonthName(data.month)}${seperator}${data.year}";
   }
@@ -36,7 +36,7 @@ class CarassiusConvertDateTime{
   /// * karakter separator default adalah ":". Karakter ini bisa diganti dengan menset parameter [separator]
   /// * kalau data == null, fungsi ini akan mengembalikan string yang di set di parameter [showIfNull].
   /// * kalau [showWithSecond] == true, juga akan menampilkan detik, kalau false hanya menampilkan jam dan menit
-  static String toStringJustTime(DateTime? data, bool showWithSecond, {String seperator = ":", String showIfNull = "-"}){
+  static String? toStringJustTime(DateTime? data, bool showWithSecond, {String seperator = ":", String? showIfNull = "-"}){
     if(data == null) return showIfNull;
 
     if(showWithSecond){
@@ -49,7 +49,7 @@ class CarassiusConvertDateTime{
   /// misalnya data yang di pass ke fungsi ini tanggal 1 sedang kan sekarang tanggal 2, fungsi ini akan mereturn "Kemarin jj:mm"
   ///
   /// Secara garis besar, penggunaannya sama dengan [toStringJustTime()]
-  static String toStringJustTimeWithDateIfNotToday(DateTime? data, bool showWithSecond, {String seperator = ":", String showIfNull = "-"}){
+  static String? toStringJustTimeWithDateIfNotToday(DateTime? data, bool showWithSecond, {String seperator = ":", String? showIfNull = "-"}){
     if(data == null) return showIfNull;
 
     String? trailFrom;
@@ -127,8 +127,8 @@ class CarassiusConvertDateTime{
     if(dateFrom.year != dateTo.year || dateFrom.month != dateTo.month || dateFrom.day != dateTo.day){
 
       if(trailFrom != null || trailTo != null){
-        String addTimeFrom = (trailFrom != null) ? " "+toStringJustTime(dateFrom, false) : "";
-        String addTimeTo = (trailTo != null) ? " "+toStringJustTime(dateTo, false) : "";
+        String addTimeFrom = (trailFrom != null) ? " "+toStringJustTime(dateFrom, false).toString() : "";
+        String addTimeTo = (trailTo != null) ? " "+toStringJustTime(dateTo, false).toString() : "";
 
         String istrailFromNull = "${CarassiusConvertInt.toStringTwoDigitNumber(dateFrom.day)} ${toStringMonthName(dateFrom.month)}";
         String istrailToNull = "${CarassiusConvertInt.toStringTwoDigitNumber(dateTo.day)} ${toStringMonthName(dateTo.month)}";
