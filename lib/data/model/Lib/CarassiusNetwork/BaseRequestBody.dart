@@ -7,9 +7,9 @@ class BaseRequestBody{
 
   /// digunakan untuk memasukkan parameter form ke body request
   /// Contoh penggunaan BaseRequestBody().addKey("name", "Clara").addKey("age", "7")
-  BaseRequestBody addKey(String key, String? value){
+  BaseRequestBody addKey(String key, dynamic value){
     if(value!= null){
-      _body[key] = value;
+      _body[key] = value.toString();
     }
     return this;
   }
