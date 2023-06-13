@@ -147,7 +147,7 @@ class CarassiusConvertDateTime{
       }
     }
 
-    return "${toStringJustTime(dateTo, false)}${seperator}${toStringJustTime(dateFrom, false)}";
+    return "${toStringJustTime(dateFrom, false)}${seperator}${toStringJustTime(dateTo, false)}";
   }
 
   /// Untuk mereturn nama bulan dari string. Misalnya 4 jadi April
