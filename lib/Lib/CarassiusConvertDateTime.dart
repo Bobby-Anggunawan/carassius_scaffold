@@ -150,6 +150,29 @@ class CarassiusConvertDateTime{
     return "${toStringJustTime(dateFrom, false)}${seperator}${toStringJustTime(dateTo, false)}";
   }
 
+  /// Digunakan untuk mereturn selisih time pertama dan kedua.
+  /// Misalnya hasil returnnya bisa jadi 5 menit, 2 jam, atau 3 detik tergantung besar perbedaannya
+  static String? generateStringDifference(DateTime? dateFrom, DateTime? dateTo){
+    if(dateFrom!= null && dateTo != null){
+      var selisih = dateFrom.difference(dateTo);
+      if(selisih.inHours > 24){
+        return "${selisih.inDays} Hari";
+      }
+      else if(selisih.inMinutes > 60){
+        return "${selisih.inHours} Jam";
+      }
+      else if(selisih.inSeconds > 60){
+        return "${selisih.inMinutes} Menit";
+      }
+      else{
+        return "${selisih.inSeconds} Detik";
+      }
+    }
+    else{
+      return null;
+    }
+  }
+
   /// Untuk mereturn nama bulan dari string. Misalnya 4 jadi April
   static String toStringMonthName(int bulan){
     switch(bulan){
