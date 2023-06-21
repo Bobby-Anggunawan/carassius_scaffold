@@ -5,6 +5,7 @@ class CarassiusConvertDateTime{
 
   /// parse datretime dari string atau return null kalau datetimenya null
   static DateTime? parseFromStringOrNull(String? source){
+
     if(source == null) return null;
 
     return DateTime.parse(source);
@@ -155,13 +156,13 @@ class CarassiusConvertDateTime{
   static String? generateStringDifference(DateTime? dateFrom, DateTime? dateTo){
     if(dateFrom!= null && dateTo != null){
       var selisih = dateFrom.difference(dateTo);
-      if(selisih.inHours > 24){
+      if(selisih.inHours.abs() > 24){
         return "${selisih.inDays} Hari";
       }
-      else if(selisih.inMinutes > 60){
+      else if(selisih.inMinutes.abs() > 60){
         return "${selisih.inHours} Jam";
       }
-      else if(selisih.inSeconds > 60){
+      else if(selisih.inSeconds.abs() > 60){
         return "${selisih.inMinutes} Menit";
       }
       else{
