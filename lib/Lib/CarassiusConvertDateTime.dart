@@ -161,16 +161,16 @@ class CarassiusConvertDateTime{
     if(dateFrom!= null && dateTo != null){
       var selisih = dateFrom.difference(dateTo);
       if(selisih.inHours.abs() > 24){
-        return leading.getResult(selisih.inDays)+"${selisih.inDays} Hari"+trailing.getResult(selisih.inDays);
+        return leading.getResult(selisih.inDays)+"${selisih.inDays.abs()} Hari"+trailing.getResult(selisih.inDays);
       }
       else if(selisih.inMinutes.abs() > 60){
-        return leading.getResult(selisih.inHours)+"${selisih.inHours} Jam"+trailing.getResult(selisih.inHours);
+        return leading.getResult(selisih.inHours)+"${selisih.inHours.abs()} Jam"+trailing.getResult(selisih.inHours);
       }
       else if(selisih.inSeconds.abs() > 60){
-        return leading.getResult(selisih.inMinutes)+"${selisih.inMinutes} Menit"+trailing.getResult(selisih.inMinutes);
+        return leading.getResult(selisih.inMinutes)+"${selisih.inMinutes.abs()} Menit"+trailing.getResult(selisih.inMinutes);
       }
       else{
-        return leading.getResult(selisih.inSeconds)+"${selisih.inSeconds} Detik"+trailing.getResult(selisih.inSeconds);
+        return leading.getResult(selisih.inSeconds)+"${selisih.inSeconds.abs()} Detik"+trailing.getResult(selisih.inSeconds);
       }
     }
     else{
