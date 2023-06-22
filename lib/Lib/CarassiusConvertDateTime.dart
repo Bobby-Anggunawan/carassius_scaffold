@@ -1,5 +1,7 @@
 import 'package:carassius_scaffold/Lib/CarassiusConvertInt.dart';
 
+import '../data/model/Lib/CarassiusConvertDateTime/ShowWhenNegativeOrPositive.dart';
+
 /// berisi berbagai fungsi untuk mengkonvert data ke datetime
 class CarassiusConvertDateTime{
 
@@ -153,20 +155,22 @@ class CarassiusConvertDateTime{
 
   /// Digunakan untuk mereturn selisih time pertama dan kedua.
   /// Misalnya hasil returnnya bisa jadi 5 menit, 2 jam, atau 3 detik tergantung besar perbedaannya
-  static String? generateStringDifference(DateTime? dateFrom, DateTime? dateTo){
+  /// leading adalah kata tambahan yang ditampilkan di awal string hasil return
+  /// trailing adalah kata tambahan yang ditampilkan di akhir string hasil return
+  static String? generateStringDifference(DateTime? dateFrom, DateTime? dateTo, ShowWhenNegativeOrPositive leading, ShowWhenNegativeOrPositive trailing){
     if(dateFrom!= null && dateTo != null){
       var selisih = dateFrom.difference(dateTo);
       if(selisih.inHours.abs() > 24){
-        return "${selisih.inDays} Hari";
+        return leading.getResult(selisih.inDays)+"${selisih.inDays} Hari"+trailing.getResult(selisih.inDays);
       }
       else if(selisih.inMinutes.abs() > 60){
-        return "${selisih.inHours} Jam";
+        return leading.getResult(selisih.inHours)+"${selisih.inHours} Jam"+trailing.getResult(selisih.inHours);
       }
       else if(selisih.inSeconds.abs() > 60){
-        return "${selisih.inMinutes} Menit";
+        return leading.getResult(selisih.inMinutes)+"${selisih.inMinutes} Menit"+trailing.getResult(selisih.inMinutes);
       }
       else{
-        return "${selisih.inSeconds} Detik";
+        return leading.getResult(selisih.inSeconds)+"${selisih.inSeconds} Detik"+trailing.getResult(selisih.inSeconds);
       }
     }
     else{
