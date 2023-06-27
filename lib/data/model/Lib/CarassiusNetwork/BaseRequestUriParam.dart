@@ -1,4 +1,5 @@
 import 'package:carassius_scaffold/Lib/CarassiusConvertDateTime.dart';
+import 'package:carassius_scaffold/Lib/CarassiusConvertInt.dart';
 
 class BaseRequestUriParam{
   List<String> keys = [];
@@ -29,7 +30,7 @@ class BaseRequestUriParam{
       }
       else if(value is DateTime){
         keys.add(key);
-        values.add(CarassiusConvertDateTime.toStringJustDateAllNumber(value)!);
+        values.add(value.year.toString()+"-"+CarassiusConvertInt.toStringTwoDigitNumber(value.month)+"-"+CarassiusConvertInt.toStringTwoDigitNumber(value.day));
       }
       else if(value is int){
         keys.add(key);
