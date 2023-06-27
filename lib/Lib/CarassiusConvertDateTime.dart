@@ -17,9 +17,9 @@ class CarassiusConvertDateTime{
   ///
   /// **Note**
   /// * karakter separator default adalah "-". Karakter ini bisa diganti dengan menset parameter [separator]
-  /// * kalau data == null, fungsi ini akan mengembalikan string yang di set di parameter [showIfNull].
-  static String? toStringJustDateAllNumber(DateTime? data, {String seperator = "-", String? showIfNull = "-"}){
-    if(data == null) return showIfNull;
+  /// * kalau data == null, fungsi ini akan mengembalikan nilai null
+  static String? toStringJustDateAllNumber(DateTime? data, {String seperator = "-"}){
+    if(data == null) return null;
     return "${CarassiusConvertInt.toStringTwoDigitNumber(data.day)}${seperator}${CarassiusConvertInt.toStringTwoDigitNumber(data.month)}${seperator}${data.year}";
   }
 
