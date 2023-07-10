@@ -20,7 +20,7 @@ import 'data/model/CarassiusStartingApp/MyThemeColor.dart';
 /// * Routes: Diisi dengan halaman halaman yang ada di aplikasi ini. Merupakan implementasi dari https://docs.flutter.dev/cookbook/navigation/named-routes
 /// * colorsLightTheme dan colorsDarkTheme: Diisi dengan warna yang ingin digunakan aplikasi. Umumnya warna yang ditampilkan adalah warna di colorsLightTheme dan sedangkan colorsDarkTheme hanya ditampilkan di perangkat mobile jika device di setting dark mode. Merupakan implementasi dari https://m3.material.io/styles/color/the-color-system/key-colors-tones
 class CarassiusStartingApp extends StatelessWidget {
-  const CarassiusStartingApp({Key? key, required this.routes, required this.colorsLightTheme, required this.colorsDarkTheme, this.textTheme: null}) : super(key: key);
+  const CarassiusStartingApp({Key? key, required this.routes, required this.colorsLightTheme, required this.colorsDarkTheme, this.textTheme: null, this.builder = null}) : super(key: key);
 
   /// tempat mendaftarkan semua route dan page yang digunakan di aplikasi ini
   final MyRoutes routes;
@@ -37,10 +37,13 @@ class CarassiusStartingApp extends StatelessWidget {
   /// https://api.flutter.dev/flutter/material/TextTheme-class.html
   final TextTheme? textTheme;
 
+  final Widget Function(BuildContext, Widget?)? builder;
+
   @override
   Widget build(BuildContext context) {
 
     return MaterialApp(
+      builder: builder,
       routes: routes.getRoutes(),
       theme: ThemeData(
           colorScheme: colorsLightTheme.colorScheme(),
