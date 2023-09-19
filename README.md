@@ -25,6 +25,7 @@ TODO: List what your package can do. Maybe include images, gifs, or videos.
 * `CarassiusToString` berisi berbagai fungsi untuk mengkonversi string atau data lain ke string dengan format tertentu
 * `CarassiusToDateTime`
 * `CarassiusNetwork` berisi fungsi untuk melakukan request hanya dengan 1 baris kode
+* `CarassiusState` berisi berbagai fungsi dasar yang dipakai di banyak halaman misalnya seperti fungsi navigasi
 
 ### CarassiusLib
 

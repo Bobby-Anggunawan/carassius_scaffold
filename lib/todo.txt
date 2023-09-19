@@ -1,0 +1,5 @@
+File ini berisi daftar apa saja yang ingin ditambahkan atau diubah di framework ini
+
+-TAMBAHKAN FUNGSI MENAMPILKAN TOAST KE "CarassiusStartingApp"
+-PERBAIKI "CarassiusLoadingScaffold". Kalau kita letakkan variable isloading di viewmodel parrent, child viewmodel dari viewmodel parrent tidak bisa mengakses isloading ini
+
