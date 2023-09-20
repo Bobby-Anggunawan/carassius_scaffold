@@ -36,6 +36,7 @@ Class yang berisi fungsi fungsi penting tapi belum dapat dikategorikan. Fungsi d
 
 daftar berbagai widget yang ada di dalam library ini
 * `CUIDialogMaterialDateTimePicker()`: Menampilkan dialog material design yang mengambil input datetime(tangga dan jam)
+* `CUICardText()`: Dialog standar terinspirasi dari material design
 
 ## Getting started
 

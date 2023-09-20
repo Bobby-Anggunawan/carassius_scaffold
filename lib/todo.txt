@@ -1,5 +1,7 @@
 File ini berisi daftar apa saja yang ingin ditambahkan atau diubah di framework ini
 
 -TAMBAHKAN FUNGSI MENAMPILKAN TOAST KE "CarassiusStartingApp"
+    -mungkin fungsi ini bisa ditambahkan di class "CarassiusState" pakai "ScaffoldMessenger"
+        https://docs.flutter.dev/cookbook/design/snackbars
 -PERBAIKI "CarassiusLoadingScaffold". Kalau kita letakkan variable isloading di viewmodel parrent, child viewmodel dari viewmodel parrent tidak bisa mengakses isloading ini
 
