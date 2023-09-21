@@ -11,7 +11,7 @@ import 'package:flutter/material.dart';
 /// * Penjelasan
 /// * Daftar tombol aksi
 class CUICardText extends StatelessWidget {
-  const CUICardText({Key? key, required this.title, required this.content, required this.action, this.actionButtonAlignment = WrapAlignment.end, this.width = null, this.badge = null, this.badgeAlignment = Alignment.topRight}) : super(key: key);
+  const CUICardText({Key? key, required this.title, required this.content, required this.action, this.actionButtonAlignment = WrapAlignment.end, this.width = null, this.badge = null, this.badgeAlignment = Alignment.topRight, this.elevation = 3}) : super(key: key);
 
   /// judul dari card ini
   final String title;
@@ -36,6 +36,11 @@ class CUICardText extends StatelessWidget {
   /// defaultnya **topRight**
   final Alignment? badgeAlignment;
 
+  /// elevation(bayangan) card ini
+  ///
+  /// **Note:** Penjelasan elevation dapat dilihat dari https://m3.material.io/styles/elevation/applying-elevation
+  final double elevation;
+
   @override
   Widget build(BuildContext context) {
 
@@ -58,6 +63,7 @@ class CUICardText extends StatelessWidget {
       width: width,
       child: Material(
         type: MaterialType.card,
+        elevation: elevation,
         borderRadius: BorderRadius.circular(CarassiusGetter.padding().getAutoPadding(context)),
         child: Padding(
           padding: EdgeInsets.all(CarassiusGetter.padding().getAutoPadding(context)),
@@ -77,7 +83,7 @@ class CUICardText extends StatelessWidget {
               ),
               Padding(padding: EdgeInsets.only(top: CarassiusGetter.padding().portraitPadding)),
               Wrap(
-                  children: action as List<Widget>,
+                  children: action!=null ? action as List<Widget> : [],
                   alignment: actionButtonAlignment
               )
             ],
