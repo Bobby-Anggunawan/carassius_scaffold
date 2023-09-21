@@ -50,6 +50,7 @@ class CUIItemsListviewBasic extends StatelessWidget {
                       title,
                       style: CarassiusGetter.themeText(context).titleMedium
                   ),
+                  Row(),
                   (
                       subtitle!= null ? Text(
                           subtitle!,
