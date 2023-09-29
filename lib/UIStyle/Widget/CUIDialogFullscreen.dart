@@ -6,7 +6,9 @@ void CUIDialogFullscreen(
       required Function onConfirm,
       required String penjelasanDialog,
       required String judulDataDialog,
-      required Widget content}){
+      required Widget content,
+      String confirmButtonText = "Confirm",
+      IconData confirmButtonIcon = Icons.edit}){
   showDialog(context: context, builder: (context){
     return Dialog.fullscreen(
       backgroundColor: CarassiusGetter.themeColor(context).primaryContainer,
@@ -39,12 +41,12 @@ void CUIDialogFullscreen(
                       })
                   ),
                   label: Text(
-                    "Confirm",
+                    confirmButtonText,
                     style: TextStyle(
                         color: CarassiusGetter.themeColor(context).onPrimaryContainer
                     ),
                   ),
-                  icon: Icon(Icons.edit),
+                  icon: Icon(confirmButtonIcon),
                 )
               ],
             ),
