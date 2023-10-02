@@ -1,4 +1,5 @@
 import 'package:carassius_scaffold/Pages/ReadyToUse/AccountInfoPage/CarAccountInfoPage.dart';
+import 'package:carassius_scaffold/UIStyle/Widget/KoiDateRangePicker.dart';
 import 'package:carassius_scaffold/UIStyle/Widget/ListItems/CUIItemsListviewBasic.dart';
 import 'package:carassius_scaffold/data/model/Pages/ReadyToUse/AccountInfoPage/CarAccountInfoPage/AccountInfo.dart';
 import 'package:flutter/material.dart';
@@ -10,20 +11,7 @@ class TestPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Container(
-          color: Colors.amber,
-          width: 500,
-          child: CUIItemsListviewBasic(
-            leading: CircleAvatar(
-              child: Text("T"),
-            ),
-            title: 'Ini judul list item',
-            subtitle: 'Ini subtitke dari list item. Gak usah panjang panjang yang penting bisa dilihat untuk jadi contoh. Lorem ipsum dolor sit amet pun boleh. Ini kan cuma test, terserah saya tulis apa....',
-            trailing: Badge(
-              label: Text("1 Pesan"),
-            ),
-          ),
-        ),
+        child: KoiDateRangePicker(firstDate: DateTime(2000), lastDate: DateTime.now(), onStartDateChanged: (DateTime value) { print("start time: ${value}"); }, onEndDateChanged: (DateTime? value) { print("end time: ${value}"); },),
       ),
     );
   }

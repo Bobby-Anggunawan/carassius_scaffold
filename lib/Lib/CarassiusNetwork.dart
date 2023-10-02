@@ -47,6 +47,7 @@ class CarassiusNetwork{
 
     http.StreamedResponse response = await request.send();
     var ret = await response.stream.bytesToString();
+
     if(response.statusCode == 200){
       try{
         return jsonDecode(ret);
