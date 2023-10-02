@@ -76,6 +76,11 @@ const Duration _dialogSizeAnimationDuration = Duration(milliseconds: 200);
 const double _inputFormPortraitHeight = 98.0;
 const double _inputFormLandscapeHeight = 108.0;
 
+const double _dayPickerRowHeight = 42.0;
+const int _maxDayPickerRowCount = 6; // A 31 day month that starts on Saturday.
+// One extra row for the day-of-week header.
+const double _maxDayPickerHeight = _dayPickerRowHeight * (_maxDayPickerRowCount + 1);
+
 
 // A restorable [DatePickerEntryMode] value.
 //
@@ -602,42 +607,45 @@ class _CalendarDateRangePickerState extends State<KoiDateRangePicker> {
   Widget build(BuildContext context) {
     const Key sliverAfterKey = Key('sliverAfterKey');
 
-    return Column(
-      children: <Widget>[
-        const _DayHeaders(),
-        if (_showWeekBottomDivider) const Divider(height: 0),
-        Expanded(
-          child: _CalendarKeyboardNavigator(
-            firstDate: widget.firstDate,
-            lastDate: widget.lastDate,
-            initialFocusedDay: _startDate ?? widget.initialStartDate ?? widget.currentDate,
-            // In order to prevent performance issues when displaying the
-            // correct initial month, 2 `SliverList`s are used to split the
-            // months. The first item in the second SliverList is the initial
-            // month to be displayed.
-            child: CustomScrollView(
-              key: _scrollViewKey,
-              controller: _controller,
-              center: sliverAfterKey,
-              slivers: <Widget>[
-                SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) => _buildMonthItem(context, index, true),
-                    childCount: _initialMonthIndex,
+    return SizedBox(
+      height: _maxDayPickerHeight,
+      child: Column(
+        children: <Widget>[
+          const _DayHeaders(),
+          if (_showWeekBottomDivider) const Divider(height: 0),
+          Expanded(
+            child: _CalendarKeyboardNavigator(
+              firstDate: widget.firstDate,
+              lastDate: widget.lastDate,
+              initialFocusedDay: _startDate ?? widget.initialStartDate ?? widget.currentDate,
+              // In order to prevent performance issues when displaying the
+              // correct initial month, 2 `SliverList`s are used to split the
+              // months. The first item in the second SliverList is the initial
+              // month to be displayed.
+              child: CustomScrollView(
+                key: _scrollViewKey,
+                controller: _controller,
+                center: sliverAfterKey,
+                slivers: <Widget>[
+                  SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                          (BuildContext context, int index) => _buildMonthItem(context, index, true),
+                      childCount: _initialMonthIndex,
+                    ),
                   ),
-                ),
-                SliverList(
-                  key: sliverAfterKey,
-                  delegate: SliverChildBuilderDelegate(
-                        (BuildContext context, int index) => _buildMonthItem(context, index, false),
-                    childCount: _numberOfMonths - _initialMonthIndex,
+                  SliverList(
+                    key: sliverAfterKey,
+                    delegate: SliverChildBuilderDelegate(
+                          (BuildContext context, int index) => _buildMonthItem(context, index, false),
+                      childCount: _numberOfMonths - _initialMonthIndex,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
