@@ -2,6 +2,7 @@
 class CarassiusConvertString{
   /// misalnya string "IkanAsin" bakal diubah jadi "Ikan Asin"(ditambah spasi).
   /// Berguna misalnya punya enum {BaksoBakar, IkanAsin, BakpauDaging} terus ingin menampilkan isi enum pakai foreach
+  /// <sudah masuk carassius blueprint>
   static String addSpaceBetweenEachCapital(String valueToAddSpace){
     String ret = "";
     valueToAddSpace.split('').forEach((ch){
